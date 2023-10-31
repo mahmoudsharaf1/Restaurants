@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text, TouchableOpacity, View } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 
 import styles from './styles';
@@ -15,8 +15,8 @@ const InputSearch = ({
     return (
         <View style={styles.container}>
             <TouchableOpacity>
-                <Ionicons
-                    name='search'
+                <AntDesign
+                    name='search1'
                     size={ScaleWidth(23)}
                 />
             </TouchableOpacity>

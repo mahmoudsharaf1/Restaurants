@@ -1,7 +1,7 @@
-import { ActivityIndicator, StyleSheet, Text, View } from 'react-native'
+import { ActivityIndicator, Platform, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useRef, useState } from 'react'
 import axios from 'axios';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 
 import styles from './styles';
@@ -61,7 +61,7 @@ const RestaurantsDetails = ({ route }) => {
             </View>
             <MapView
                 ref={mapRef}
-                provider={PROVIDER_GOOGLE}
+                provider={Platform.OS == 'android' ? PROVIDER_GOOGLE : null}
                 showsUserLocation={true}
                 initialRegion={{
                     latitude: restaurantDetails.coordinates.latitude,

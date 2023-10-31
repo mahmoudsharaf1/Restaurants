@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native'
-import { ScaleHeight, ScaleWidth } from '../../../common/foundation'
+import { Colors, ScaleHeight, ScaleWidth } from '../../../common/foundation'
 
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        backgroundColor: Colors.white
     },
     headerView: {
         alignSelf: 'center',

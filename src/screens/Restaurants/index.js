@@ -1,6 +1,7 @@
+
 import React, { useEffect, useState } from 'react'
 import { View, Text, TouchableOpacity, FlatList, ActivityIndicator, BackHandler } from 'react-native'
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import Entypo from 'react-native-vector-icons/Entypo';
 
 import styles from './styles';
 import Header from '../../components/Header';
@@ -9,6 +10,7 @@ import { Colors, ScaleWidth } from '../../common/foundation';
 import RestaurantsItems from '../../components/RestaurantsItems';
 import { getRestaurants } from '../../apis/apis';
 
+
 const Home = ({ navigation }) => {
     const [inputValue, setInputValue] = useState('')
     const [listView, setListView] = useState('rows')
@@ -16,6 +18,8 @@ const Home = ({ navigation }) => {
     const [bitPricer, setBitPricer] = useState(false);
     const [bitSpender, setBitSpender] = useState(false);
     const [restaurants, setRestaurants] = useState([]);
+
+
 
 
     useEffect(() => {
@@ -33,34 +37,21 @@ const Home = ({ navigation }) => {
     }
 
     const renderCostEffectiveItem = ({ item }) => {
-        if (item.price == '$') {
-            return (
-                <RestaurantsItems
-                    image_url={item.image_url}
-                    name={item.name}
-                    review_count={item.review_count}
-                    rating={item.rating}
-                    listView={listView}
-                    onPress={() => navigation.navigate('RestaurantsDetails', { item })}
-                />
-            )
-        }
+        return (
+            <RestaurantsItems
+                image_url={item.image_url}
+                name={item.name}
+                review_count={item.review_count}
+                rating={item.rating}
+                listView={listView}
+                onPress={() => navigation.navigate('RestaurantsDetails', { item })}
+            />
+        )
+
     }
-    const renderBitPriceItem = ({ item }) => {
-        if (item.price == '$$') {
-            setBitPricer(true)
-            return (
-                <RestaurantsItems
-                    image_url={item.image_url}
-                    name={item.name}
-                    review_count={item.review_count}
-                    rating={item.rating}
-                    listView={listView}
-                    onPress={() => navigation.navigate('RestaurantsDetails', { item })}
-                />
-            )
-        }
-    }
+
+
+
     return (
         <View style={styles.container}>
             <Header
@@ -75,7 +66,7 @@ const Home = ({ navigation }) => {
             <View style={styles.headerList}>
                 <Text style={styles.text}>Cost Effective</Text>
                 <TouchableOpacity onPress={changeListView}>
-                    <Ionicons
+                    <Entypo
                         name='menu'
                         size={ScaleWidth(26)}
                     />
@@ -97,22 +88,9 @@ const Home = ({ navigation }) => {
                 }
             />
 
-            <Text>{bitPricer ? 'Bit Price' : null}</Text>
+            {/* <Text>{bitPricer ? 'Bit Price' : null}</Text> */}
 
-            <FlatList
-                data={restaurants}
-                renderItem={renderBitPriceItem}
-                key={listView == 'columns' ? numCols : null}
-                numColumns={listView == 'columns' ? numCols : null}
 
-                keyExtractor={(item, index) => JSON.stringify(index)}
-                ListEmptyComponent={
-                    <ActivityIndicator
-                        color={Colors.black}
-                        size={'small'}
-                    />
-                }
-            />
 
 
         </View>

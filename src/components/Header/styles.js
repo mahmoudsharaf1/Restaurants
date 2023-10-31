@@ -6,7 +6,7 @@ import { Colors, ScaleHeight, ScaleWidth } from '../../common/foundation'
 const styles = StyleSheet.create({
     container: {
         marginHorizontal: ScaleWidth(15),
-        marginTop: ScaleHeight(27),
+        marginTop: ScaleHeight(47),
         flexDirection: 'row',
         alignItems: 'center'
     },
